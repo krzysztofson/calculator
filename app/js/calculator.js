@@ -73,7 +73,7 @@ class Calculator {
 
     refreshScreen() {
         // show value on screen
-        this.nowScreenText.innerText = this.nowScreen;
+        this.nowScreenText.innerText = formatNumber(this.nowScreen);
         if (this.action != null) {
             this.beforeScreenText.innerText = `${this.beforeScreen} ${this.action} `;
         }
@@ -81,6 +81,11 @@ class Calculator {
 }
 
 const calculator = new Calculator(beforeScreenText, nowScreenText);
+
+function formatNumber(number) {
+    // add coma every 3 digits befor dot
+    return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 
 digitBtns.forEach(btn => {
     // when digit btn is clicked get it's value and update screen
