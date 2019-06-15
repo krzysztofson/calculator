@@ -12,21 +12,31 @@ class Calculator {
         // assigning calculator display to class
         this.beforeScreenText = beforeScreenText;
         this.nowScreenText = nowScreenText;
+        this.beforeScreen = '';
+        this.nowScreen = '';
     }
 
     showText(number) {
         // update value
-        if (this.nowScreen === undefined) {
-            this.nowScreen = ''
-        } else if (number === '.' && this.nowScreen.includes('.')) {
+        if (number === '.' && this.nowScreen.includes('.')) {
             return
         }
         this.nowScreen += number.toString();
     }
 
+    selectAction(action) {
+        if (this.nowScreen === '') {
+            return
+        }
+        this.action = action;
+        this.beforeScreen = this.nowScreen;
+        this.nowScreen = '';
+    }
+
     refreshScreen() {
         // show value on screen
         this.nowScreenText.innerText = this.nowScreen;
+        this.beforeScreenText.innerText = this.beforeScreen;
     }
 }
 
@@ -36,6 +46,14 @@ digitBtns.forEach(btn => {
     // when digit btn is clicked get it's value and update screen
     btn.addEventListener('click', () => {
         calculator.showText(btn.innerText);
+        calculator.refreshScreen();
+    })
+})
+
+functionBtns.forEach(btn => {
+    // when digit btn is clicked get it's value and update screen
+    btn.addEventListener('click', () => {
+        calculator.selectAction(btn.innerText);
         calculator.refreshScreen();
     })
 })
