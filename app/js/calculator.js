@@ -16,6 +16,14 @@ class Calculator {
         this.nowScreen = '';
     }
 
+    allClear() {
+        // clears all data
+        this.nowScreen = '';
+        this.beforeScreen = '';
+        this.beforeScreenText.innerText = '';
+        this.action = undefined;
+    }
+
     showText(number) {
         // update value
         if (number === '.' && this.nowScreen.includes('.')) {
@@ -39,13 +47,13 @@ class Calculator {
     }
 
     calculate() {
+        // upadates and displays result var. based on selected action
         let result;
         const before = parseFloat(this.beforeScreen);
         const now = parseFloat(this.nowScreen);
         switch (this.action) {
             case '+':
                 result = before + now;
-                console.log(result);
                 break;
             case '–':
                 result = before - now;
@@ -53,17 +61,22 @@ class Calculator {
             case '÷':
                 result = before / now;
                 break;
-            case '*':
+            case 'x':
                 result = before * now;
                 break;
         }
+        this.beforeScreenText.innerText += ` ${this.nowScreen.toString()}`;
         this.nowScreen = result;
+        this.beforeScreenText.innerText += ' =';
+        this.action = undefined;
     }
 
     refreshScreen() {
         // show value on screen
         this.nowScreenText.innerText = this.nowScreen;
-        this.beforeScreenText.innerText = this.beforeScreen;
+        if (this.action != null) {
+            this.beforeScreenText.innerText = `${this.beforeScreen} ${this.action} `;
+        }
     }
 }
 
@@ -87,5 +100,10 @@ functionBtns.forEach(btn => {
 
 resultBtn.addEventListener('click', btn => {
     calculator.calculate();
+    calculator.refreshScreen();
+})
+
+acBtn.addEventListener('click', btn => {
+    calculator.allClear();
     calculator.refreshScreen();
 })
