@@ -16,13 +16,17 @@ class Calculator {
 
     showText(number) {
         // update value
-        this.nowScreen = number;
+        if (this.nowScreen === undefined) {
+            this.nowScreen = ''
+        } else if (number === '.' && this.nowScreen.includes('.')) {
+            return
+        }
+        this.nowScreen += number.toString();
     }
 
     refreshScreen() {
         // show value on screen
         this.nowScreenText.innerText = this.nowScreen;
-        console.log(this.nowScreen);
     }
 }
 
