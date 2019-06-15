@@ -25,12 +25,39 @@ class Calculator {
     }
 
     selectAction(action) {
+        // if action is chosen move value to top screen
+        // works only for first choice
         if (this.nowScreen === '') {
             return
+        }
+        if (this.beforeScreen !== '') {
+            this.calculate();
         }
         this.action = action;
         this.beforeScreen = this.nowScreen;
         this.nowScreen = '';
+    }
+
+    calculate() {
+        let result;
+        const before = parseFloat(this.beforeScreen);
+        const now = parseFloat(this.nowScreen);
+        switch (this.action) {
+            case '+':
+                result = before + now;
+                console.log(result);
+                break;
+            case '–':
+                result = before - now;
+                break;
+            case '÷':
+                result = before / now;
+                break;
+            case '*':
+                result = before * now;
+                break;
+        }
+        this.nowScreen = result;
     }
 
     refreshScreen() {
@@ -56,4 +83,9 @@ functionBtns.forEach(btn => {
         calculator.selectAction(btn.innerText);
         calculator.refreshScreen();
     })
+})
+
+resultBtn.addEventListener('click', btn => {
+    calculator.calculate();
+    calculator.refreshScreen();
 })
