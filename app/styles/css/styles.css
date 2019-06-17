@@ -26,7 +26,12 @@ body {
   color: #fff; }
 
 .screen-now {
-  font-size: 55px; }
+  max-width: 100%;
+  background-color: #252F34;
+  border: none;
+  color: #fff;
+  font-size: 55px;
+  text-align: right; }
 
 .screen-before {
   font-size: 30px;

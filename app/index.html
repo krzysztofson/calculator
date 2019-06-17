@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="layout">
-        <div class="screen">
+        <form class="screen" method="post" action="calculator.php" id="form-calculator">
             <div data-before class="screen-before"></div>
-            <div data-now class="screen-now"></div>
-        </div>
+            <input data-now class="screen-now" name="result" ></input>
+        </form>
         <button data-allclear class="btn btn-action">AC</button>
-        <button data-save class="btn btn-action btn-big">SAVE</button>
+        <button data-save class="btn btn-action btn-big" type="submit" value="Submit" form="form-calculator">SAVE</button>
         <button data-function class="btn btn-function">÷</button>
         <button data-digit class="btn">.</button>
         <button data-digit class="btn">0</button>

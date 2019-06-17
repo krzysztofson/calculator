@@ -73,7 +73,7 @@ class Calculator {
 
     refreshScreen() {
         // show value on screen
-        this.nowScreenText.innerText = formatNumber(this.nowScreen);
+        this.nowScreenText.value = formatNumber(this.nowScreen);
         if (this.action != null) {
             this.beforeScreenText.innerText = `${this.beforeScreen} ${this.action} `;
         }
