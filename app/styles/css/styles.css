@@ -59,3 +59,17 @@ body {
 
 .btn-big {
   grid-column: span 2; }
+
+.table-layout {
+  display: flex;
+  flex-direction: column; }
+
+.table-row {
+  display: flex;
+  justify-content: space-between; }
+  .table-row:nth-child(odd) {
+    background-color: #F6B17B; }
+
+.table-cell {
+  padding: 20px 10px;
+  margin: 0; }
