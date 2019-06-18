@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="layout">
-        <form class="screen" method="post" action="calculator.php" id="form-calculator">
+        <form class="screen" method="post" action="calculator.php" id="form-calculator" target="redirect">
             <div data-before class="screen-before"></div>
             <input data-now class="screen-now" name="result" ></input>
         </form>
@@ -35,5 +35,6 @@
         <button data-digit data-key="57" class="btn">9</button>
         <button data-result data-key="13" class="btn btn-function">=</button>
     </div>
+    <iframe width="0" height="0" name="redirect" id="redirect"></iframe>
 </body>
 </html>

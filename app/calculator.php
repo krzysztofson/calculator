@@ -11,10 +11,10 @@ if (isset($_POST['result'])) {
     // combining data and adding double quotes
     $userData = array (
         array (
-            sprintf('"%s"', $date),
-            sprintf('"%s"', $calcResult),
-            sprintf('"%s"', $ipAddress),
-            sprintf('"%s"', $browser)
+            $date,
+            $calcResult,
+            $ipAddress,
+            $browser
         )
     );
     
