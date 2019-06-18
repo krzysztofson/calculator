@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles/css/styles.css" type="text/css">
 </head>
 <body class="layout-table">
-<span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">2019.06.18</p><p class="table-cell">1</p><p class="table-cell">217.67.199.171</p><p class="table-cell">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</p></span><span class="table-row"><p class="table-cell">"2019.06.18"</p><p class="table-cell">"1"</p><p class="table-cell">"217.67.199.171"</p><p class="table-cell">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"</p></span>
     <?php
         // create array from CSV file
         $dataFile = array_map('str_getcsv', file('data.csv'));
@@ -20,7 +19,7 @@
         foreach ($dataFileSorted as $dataRow) {
             echo '<div class="table-row">';
             foreach ($dataRow as $dataCell) {
-                echo '<p class="table-cell">{$dataCell}</p>';
+                echo '<p class="table-cell">' . $dataCell . '</p>';
             }
             echo '</div>';
         }

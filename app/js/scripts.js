@@ -2,7 +2,6 @@
 const digitBtns = document.querySelectorAll('[data-digit]');
 const functionBtns = document.querySelectorAll('[data-function]');
 const acBtn = document.querySelector('[data-allclear]');
-const saveBtn = document.querySelector('[data-save]');
 const resultBtn = document.querySelector('[data-result]');
 const beforeScreenText = document.querySelector('[data-before]');
 const nowScreenText = document.querySelector('[data-now]');
@@ -12,8 +11,7 @@ class Calculator {
         // assigning calculator display to class
         this.beforeScreenText = beforeScreenText;
         this.nowScreenText = nowScreenText;
-        this.beforeScreen = '';
-        this.nowScreen = '';
+        this.allClear();
     }
 
     allClear() {
@@ -21,7 +19,7 @@ class Calculator {
         this.nowScreen = '';
         this.beforeScreen = '';
         this.beforeScreenText.innerText = '';
-        this.action = undefined;
+        this.action = null;
     }
 
     showText(number) {
@@ -48,6 +46,10 @@ class Calculator {
 
     calculate() {
         // upadates and displays result var. based on selected action
+        // don't run opperation when there's no value or it already ran
+        if (this.beforeScreenText.innerText.includes('=') || !this.beforeScreenText.innerText) {
+            return
+        }
         let result;
         const before = parseFloat(this.beforeScreen);
         const now = parseFloat(this.nowScreen);
@@ -68,7 +70,7 @@ class Calculator {
         this.beforeScreenText.innerText += ` ${this.nowScreen.toString()}`;
         this.nowScreen = result;
         this.beforeScreenText.innerText += ' =';
-        this.action = undefined;
+        this.action = null;
     }
 
     refreshScreen() {
@@ -80,12 +82,12 @@ class Calculator {
     }
 }
 
-const calculator = new Calculator(beforeScreenText, nowScreenText);
-
 function formatNumber(number) {
     // add coma every 3 digits befor dot
     return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
+
+const calculator = new Calculator(beforeScreenText, nowScreenText);
 
 digitBtns.forEach(btn => {
     // when digit btn is clicked get it's value and update screen
@@ -96,7 +98,7 @@ digitBtns.forEach(btn => {
 })
 
 functionBtns.forEach(btn => {
-    // when digit btn is clicked get it's value and update screen
+    // get action from function buttons
     btn.addEventListener('click', () => {
         calculator.selectAction(btn.innerText);
         calculator.refreshScreen();
@@ -104,20 +106,20 @@ functionBtns.forEach(btn => {
 })
 
 resultBtn.addEventListener('click', btn => {
+    // show results
     calculator.calculate();
     calculator.refreshScreen();
 })
 
 acBtn.addEventListener('click', btn => {
+    // restore to empty
     calculator.allClear();
     calculator.refreshScreen();
 })
 
+// support for keyboard
 window.addEventListener('keydown', recordKey);
-
-const keys = document.querySelectorAll('.btn');
 function recordKey(e) {
-    console.log(e.keyCode);
     const pressBtn = document.querySelector(`.btn[data-key="${e.keyCode}"]`);
     if (pressBtn !== null) {
         pressBtn.click();
