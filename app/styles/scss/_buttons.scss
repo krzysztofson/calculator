@@ -1,0 +1,32 @@
+.btn {
+    font-family: 'Oxygen', sans-serif;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    background-color: #F5766F;
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--color-light);
+    transition: .2s;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .85;
+    }
+}
+
+.btn-function {
+    background-color: #F6B17B;
+}
+
+.btn-action {
+    background-color: #E93E52;
+}
+
+.btn-big {
+    grid-column: span 2;
+}
+
+.btn-disable {
+    pointer-events: none;
+}
