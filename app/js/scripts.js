@@ -116,12 +116,3 @@ acBtn.addEventListener('click', btn => {
     calculator.allClear();
     calculator.refreshScreen();
 })
-
-// support for keyboard
-window.addEventListener('keydown', recordKey);
-function recordKey(e) {
-    const pressBtn = document.querySelector(`.btn[data-key="${e.keyCode}"]`);
-    if (pressBtn !== null) {
-        pressBtn.click();
-    }
-}

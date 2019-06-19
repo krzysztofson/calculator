@@ -12,6 +12,8 @@ body {
     height: 100%;
     font-family: 'Oxygen', sans-serif;
     background-color: var(--color-light);
+    transition-duration: 2s;
+    transition-property: background-color;
 }
 
 .calculator-wrapper {
